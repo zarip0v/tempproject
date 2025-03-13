@@ -23,6 +23,7 @@ def detect_anomalies(df):
     df['is_anomaly'] = (df['temperature'] > (df['moving_avg'] + 2 * df['std_dev'])) | (df['temperature'] < (df['moving_avg'] - 2 * df['std_dev']))
     return df
 
+# так быстрее
 def parallel_analysis(df):
     with ProcessPoolExecutor() as executor:
         df_split = np.array_split(df, 4)
@@ -40,6 +41,7 @@ def calculate_summary_statistics(df):
 def plot_seasonal_profiles(df):
     return px.box(df, x='season', y='temperature', title='Сезонные профили температуры')
 
+# асинхронный и синхронный запроы получаются примерно одинаковыми по скорости, тк запрос всего один
 async def fetch_temperature_async(city, api_key):
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
     async with httpx.AsyncClient() as client:
