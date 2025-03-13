@@ -1,0 +1,10 @@
+streamlit
+pandas
+numpy
+requests
+matplotlib
+plotly
+asyncio
+httpx
+time
+concurrent.futures
