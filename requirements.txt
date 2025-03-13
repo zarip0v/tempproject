@@ -5,6 +5,5 @@ requests
 matplotlib
 plotly
 asyncio
-httpx
 time
 concurrent.futures
